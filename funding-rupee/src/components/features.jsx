@@ -1,5 +1,3 @@
-// src/components/Features.jsx
-
 import React from 'react';
 import { Users, Target, Globe } from 'lucide-react';
 

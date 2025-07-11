@@ -18,17 +18,17 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Platform</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="adasdda.html" className="hover:text-white transition-colors">
                   How it works
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="nasdjas.html" className="hover:text-white transition-colors">
                   Success stories
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="hem.html" className="hover:text-white transition-colors">
                   Trust & safety
                 </a>
               </li>
@@ -38,7 +38,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Support</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <a href="#" className="hover:text-white transition-colors">
+                <a href="asdas.html" className="hover:text-white transition-colors">
                   Help center
                 </a>
               </li>

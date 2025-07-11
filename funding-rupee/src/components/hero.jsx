@@ -1,5 +1,3 @@
-// src/components/Hero.jsx
-
 import React from 'react';
 import { Heart, Users } from 'lucide-react';
 import happyChildren from '../images/happychilldren.jpeg';
