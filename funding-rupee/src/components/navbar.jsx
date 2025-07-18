@@ -11,7 +11,7 @@ const Navbar = () => {
             <span className="text-2xl font-bold text-green-600">Rupee</span>
           </div>
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="/donate.html" className="text-gray-600 hover:text-gray-900 transition-colors">Donate</a>
+            <a href="/donate" className="text-gray-600 hover:text-gray-900 transition-colors">Donate</a>
             <a href="/fundraise.html" className="text-gray-600 hover:text-gray-900 transition-colors">Fundraise</a>
             <a href="/about.html" className="text-gray-600 hover:text-gray-900 transition-colors">About</a>
             <button className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">

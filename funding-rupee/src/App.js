@@ -1,12 +1,17 @@
+// App.js
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import FundingRupeeLanding from './components/FundingRupeeLanding';
+import DonationPage from './components/DonationPage';
 
 function App() {
   return (
-    <div className="App">
-      <FundingRupeeLanding />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<FundingRupeeLanding />} />
+        <Route path="/donate" element={<DonationPage />} />
+      </Routes>
+    </Router>
   );
 }
 
