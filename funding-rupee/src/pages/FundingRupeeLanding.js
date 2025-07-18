@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import Navbar from '../components/navbar.jsx';
-import Footer from "../components/footer.jsx";
-import WildfireAlert from "../components/alert.jsx"
-import Features from "../components/features.jsx"
-import Hero from "../components/hero.jsx"
-import CTA from "../components/cta.jsx"
-import FeaturedCampaigns from "../components/campaigns.jsx"
-import { campaigns } from '../components/campaigns.jsx';
+import Navbar from '/FundingRupee/funding-rupee/src/components/navbar.jsx';
+import Footer from "/FundingRupee/funding-rupee/src/components/footer.jsx";
+import WildfireAlert from "/FundingRupee/funding-rupee/src/components/alert.jsx"
+import Features from "/FundingRupee/funding-rupee/src/components/features.jsx"
+import Hero from "/FundingRupee/funding-rupee/src/components/hero.jsx"
+import CTA from "/FundingRupee/funding-rupee/src/components/cta.jsx"
+import FeaturedCampaigns from "/FundingRupee/funding-rupee/src/components/campaigns.jsx"
+import { campaigns } from '/FundingRupee/funding-rupee/src/components/campaigns.jsx';
 
 
 const FundingRupeeLanding = () => {
