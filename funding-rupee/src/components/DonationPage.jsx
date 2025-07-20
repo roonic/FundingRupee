@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import esewaLogo from '../images/esewaLogo.png';
 import khaltiLogo from '../images/khaltiLogo.png';
 import bankLogo from '../images/bankLogo.jpg';
+import SmallNavbar from './smallNavbar';
 
 const DonationPage = () => {
   const [amount, setAmount] = useState('');
@@ -37,7 +38,7 @@ const DonationPage = () => {
   return (
   <>
   {/* Navbar */}
-  <div className="bg-white shadow-md sticky top-0 z-50">
+  {/* <div className="bg-white shadow-md sticky top-0 z-50">
   <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
     <div className="flex items-center space-x-2">
             <span className="text-2xl font-bold text-gray-800">Funding</span>
@@ -47,8 +48,9 @@ const DonationPage = () => {
       ← Back to Home
     </a>
   </div>
-</div>
+</div> */}
 
+<SmallNavbar />
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto bg-white shadow-xl rounded-xl p-8">
         <h2 className="text-3xl font-bold text-center text-green-600 mb-10">

@@ -1,16 +1,17 @@
-// components/ThankYouPage.jsx
-import React, { useEffect, useRef } from 'react';
-// import piggyBank from '../images/piggybank.gif'; // You can use a Lottie animation or GIF
-// import coinSound from '../sounds/coin-drop.mp3';
+
+import React, { useRef } from 'react';
+import piggyBank from '../images/piggy-bank.gif';
+import coinSound from '../images/CoinDonate.mp3';
 
 const ThankYouPage = () => {
   const audioRef = useRef(null);
 
-  useEffect(() => {
+  const handleMouseEnter = () => {
     if (audioRef.current) {
+      audioRef.current.currentTime = 0; // Reset to start
       audioRef.current.play();
     }
-  }, []);
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-green-100 to-blue-100 text-center px-4">
@@ -21,13 +22,14 @@ const ThankYouPage = () => {
         Your generosity means the world to us and those in need. Every rupee counts, and you've just made a difference.
       </p>
 
-      <img 
-        // src={piggyBank} 
-        // alt="Piggy bank animation" 
-        className="w-64 h-64 mb-6" 
+      <img
+        src={piggyBank}
+        alt="Piggy bank animation"
+        className="w-64 h-64 mb-6 cursor-pointer"
+        onMouseEnter={handleMouseEnter}
       />
 
-      {/* <audio ref={audioRef} src={coinSound} preload="auto" /> */}
+      <audio ref={audioRef} src={coinSound} preload="auto" />
 
       <button
         onClick={() => window.location.href = '/'}
