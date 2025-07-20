@@ -16,7 +16,7 @@ import AboutUs from './pages/AboutUs';
 import DonationPage from './components/DonationPage';
 // import FundraiserByCategory from './pages/FundRaiserbyCategory';
 import FundraiserByCategory from './components/FundRaiserbyCategory';
-
+import CampaignSetup from './pages/CampaignSetup';
 function App() {
   return (
     <Router>
@@ -42,6 +42,8 @@ function App() {
 
         {/* Optional: About Page if you add */}
         <Route path="/about" element={<AboutUs />} />
+
+        < Route path='/start-fundraiser' element={<CampaignSetup />}/>
       </Routes>
     </Router>
   );

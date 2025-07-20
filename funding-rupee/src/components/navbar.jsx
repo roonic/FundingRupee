@@ -20,7 +20,7 @@ const Navbar = () => {
             </Link>
 
             <Link
-              to="/categories"
+              to="/start-fundraiser"
               className="text-gray-600 hover:text-gray-900 transition-colors"
             >
               Fundraise
