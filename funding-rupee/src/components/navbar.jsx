@@ -6,21 +6,21 @@ const Navbar = () => {
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-gray-800">Funding</span>
-            <span className="text-2xl font-bold text-green-600">Rupee</span>
+          <div className="flex items-center">
+            <span className="text-xl font-bold text-gray-900">Funding</span>
+            <span className="text-xl font-bold text-green-600">Rupee</span>
           </div>
 
           <nav className="hidden md:flex items-center space-x-8">
             <Link
-              to="/donate"
+              to="/fundraisers"
               className="text-gray-600 hover:text-gray-900 transition-colors"
             >
               Donate
             </Link>
 
             <Link
-              to="/categories"
+              to="/start-fundraiser"
               className="text-gray-600 hover:text-gray-900 transition-colors"
             >
               Fundraise
