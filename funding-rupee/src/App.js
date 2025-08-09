@@ -9,6 +9,7 @@ import ThankYouPage from './components/ThankYouPage';
 import FundraiserByCategory from './components/FundRaiserbyCategory';
 import CampaignSetup from './pages/CampaignSetup';
 import VerificationSetup from './pages/VerificationSetup';
+import AuthPages from './components/auth/AuthPages';
 function App() {
   return (
     <Router>
@@ -36,6 +37,7 @@ function App() {
         < Route path='/start-fundraiser' element={<CampaignSetup />}/>
         {/* Verification after start-fundraiser */}
         <Route path="/verification" element={<VerificationSetup />} />
+        <Route path="/Auth" element={<AuthPages />} />
       </Routes>
     </Router>
   );

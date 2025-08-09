@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import CampaignCard from './CampaignCard';
 import Education from '../images/education.jpg';
-import FloodEmergency from '../images/flood.jpeg'; // Replace as needed
-import Earthquake from '../images/earthquake.jpg'; // Optional second emergency image
+import FloodEmergency from '../images/flood.jpeg'; 
+import Earthquake from '../images/earthquake.jpg'; 
 
 export const campaigns = [
   {
@@ -58,12 +58,12 @@ const FeaturedCampaigns = () => {
   const banner = emergencyBanners[currentBanner];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-8 sm:py-12 lg:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Emergency Banner */}
-        <div className="relative flex h-[350px] rounded-lg overflow-visible mb-12 shadow-lg">
-          {/* Left Image */}
-          <div className="w-1/2 h-full relative">
+        <div className="relative flex flex-col md:flex-row h-auto md:h-[350px] rounded-lg overflow-hidden mb-8 sm:mb-12 shadow-lg">
+          {/* Image Section */}
+          <div className="w-full md:w-1/2 h-48 sm:h-64 md:h-full relative">
             <img
               src={banner.image}
               alt="Emergency"
@@ -71,41 +71,66 @@ const FeaturedCampaigns = () => {
             />
           </div>
 
-          {/* Right Content */}
-          <div className="w-1/2 bg-red-700 text-white p-8 flex flex-col justify-center relative">
-            <h3 className="text-2xl font-bold mb-3">{banner.title}</h3>
-            <p className="mb-5 text-base leading-relaxed">{banner.description}</p>
-            <button className="bg-white text-red-600 px-6 py-2 rounded-md hover:bg-gray-100 hover:shadow-lg transform hover:scale-105 font-semibold self-start transition-all duration-300">
+          {/* Content Section */}
+          <div className="w-full md:w-1/2 bg-red-700 text-white p-4 sm:p-6 lg:p-8 flex flex-col justify-center relative">
+            <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 leading-tight">
+              {banner.title}
+            </h3>
+            <p className="mb-4 sm:mb-5 text-sm sm:text-base leading-relaxed">
+              {banner.description}
+            </p>
+            <button className="bg-white text-red-600 px-4 sm:px-6 py-2 rounded-md hover:bg-gray-100 hover:shadow-lg transform hover:scale-105 font-semibold self-start transition-all duration-300 text-sm sm:text-base">
               Donate Now →
             </button>
           </div>
 
-          {/* Attractive Left Arrow */}
+          {/* Navigation Arrows - Hidden on small screens for better UX */}
           {emergencyBanners.length > 1 && (
-            <button
-              onClick={handlePrev}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow-md text-red-600 hover:bg-red-100 hover:scale-110 transform transition-all rounded-full w-10 h-10 flex items-center justify-center z-10"
-              aria-label="Previous"
-            >
-              <span className="text-xl font-bold">←</span>
-            </button>
+            <>
+              {/* Left Arrow */}
+              <button
+                onClick={handlePrev}
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white shadow-md text-red-600 hover:bg-red-100 hover:scale-110 transform transition-all rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center z-10 hidden sm:flex"
+                aria-label="Previous"
+              >
+                <span className="text-lg sm:text-xl font-bold">←</span>
+              </button>
+
+              {/* Right Arrow */}
+              <button
+                onClick={handleNext}
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white shadow-md text-red-600 hover:bg-red-100 hover:scale-110 transform transition-all rounded-full w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center z-10 hidden sm:flex"
+                aria-label="Next"
+              >
+                <span className="text-lg sm:text-xl font-bold">→</span>
+              </button>
+            </>
           )}
 
-          {/* Attractive Right Arrow */}
+          {/* Mobile Navigation Dots */}
           {emergencyBanners.length > 1 && (
-            <button
-              onClick={handleNext}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-white shadow-md text-red-600 hover:bg-red-100 hover:scale-110 transform transition-all rounded-full w-10 h-10 flex items-center justify-center z-10"
-              aria-label="Next"
-            >
-              <span className="text-xl font-bold">→</span>
-            </button>
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 sm:hidden z-10">
+              {emergencyBanners.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentBanner(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentBanner 
+                      ? 'bg-white' 
+                      : 'bg-white/50 hover:bg-white/75'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
           )}
         </div>
 
         {/* Featured Campaigns */}
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">Featured Campaigns</h2>
-        <div className="grid md:grid-cols-3 gap-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">
+          Featured Campaigns
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {campaigns.map((campaign, index) => (
             <CampaignCard key={index} {...campaign} />
           ))}
