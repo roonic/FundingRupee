@@ -5,10 +5,12 @@ import { Heart, Users } from 'lucide-react';
 import happyChildren from '../images/happychilldren.jpeg';
 import helpingHands from '../images/helpinghands.jpeg';
 import volunteers from '../images/volunteers.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
   const images = [happyChildren, helpingHands, volunteers];
 
+  const navigate = useNavigate();
   const tags = [
     { count: '10,000+', label: 'Lives Impacted' },
     { count: '2,000+', label: 'Campaigns Funded' },
@@ -41,15 +43,23 @@ const Hero = () => {
               Crowdfunding Nepal's Hopes, One Rupee Closer.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-green-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors flex items-center justify-center">
-                Donate Now
-                <Heart className="ml-2 w-5 h-5" />
-              </button>
-              <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-gray-400 transition-colors">
-                Learn More
-              </button>
-            </div>
+
+<div className="flex flex-col sm:flex-row gap-4">
+  <button
+    className="bg-green-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors flex items-center justify-center"
+    onClick={() => navigate("/fundraisers")}
+  >
+    Donate Now
+    <Heart className="ml-2 w-5 h-5" />
+  </button>
+
+  <button
+    className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg text-lg font-semibold hover:border-gray-400 transition-colors"
+    onClick={() => navigate("/about")}
+  >
+    Learn More
+  </button>
+</div>
           </div>
 
           {/* Right Image & Tag */}
