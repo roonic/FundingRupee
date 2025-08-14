@@ -10,6 +10,7 @@ import FundraiserByCategory from './components/FundRaiserbyCategory';
 import CampaignSetup from './pages/CampaignSetup';
 import VerificationSetup from './pages/VerificationSetup';
 import AuthPages from './components/auth/AuthPages';
+import OrgDashboard from './pages/dashboard';
 function App() {
   return (
     <Router>
@@ -38,6 +39,7 @@ function App() {
         {/* Verification after start-fundraiser */}
         <Route path="/verification" element={<VerificationSetup />} />
         <Route path="/Auth" element={<AuthPages />} />
+	<Route path="/dashboard" element={<OrgDashboard />} />
       </Routes>
     </Router>
   );

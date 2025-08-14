@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Heart, Users } from 'lucide-react';
+
+// Import your images
 import happyChildren from '../images/happychilldren.jpeg';
+import helpingHands from '../images/helpinghands.jpeg';
+import volunteers from '../images/volunteers.jpg';
 
 const Hero = () => {
+  const images = [happyChildren, helpingHands, volunteers];
+
+  const tags = [
+    { count: '10,000+', label: 'Lives Impacted' },
+    { count: '2,000+', label: 'Campaigns Funded' },
+    { count: '5,000+', label: 'Contributors' },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 4000); // Change both image and tag every 4 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="py-40 lg:py-70">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
           <div className="space-y-8">
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
               <span className="text-green-600">Nepal's Platform for Change,</span>
@@ -29,22 +52,28 @@ const Hero = () => {
             </div>
           </div>
 
+          {/* Right Image & Tag */}
           <div className="relative">
-            <div className="rounded-3xl overflow-hidden shadow-2xl">
-              <img 
-                src={happyChildren}
-                alt="Happy children"
-                className="w-full h-96 object-cover"
+            {/* Image */}
+            <div className="rounded-3xl overflow-hidden shadow-2xl transition-all duration-700">
+              <img
+                src={images[currentIndex]}
+                alt="Hero"
+                className="w-full h-96 object-cover transition-opacity duration-700"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl">
+
+            {/* Floating Tag */}
+            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-xl transition-all duration-500">
               <div className="flex items-center space-x-4">
                 <div className="bg-green-100 rounded-full p-3">
                   <Users className="w-6 h-6 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-gray-900">10,000+</p>
-                  <p className="text-gray-600">Lives Impacted</p>
+                  <p className="text-2xl font-bold text-gray-900">
+                    {tags[currentIndex].count}
+                  </p>
+                  <p className="text-gray-600">{tags[currentIndex].label}</p>
                 </div>
               </div>
             </div>
