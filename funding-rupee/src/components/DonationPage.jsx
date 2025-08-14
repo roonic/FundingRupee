@@ -125,7 +125,7 @@ const DonationPage = () => {
               <img
                 src="https://res.cloudinary.com/ddksvqafm/image/upload/v1755190948/WhatsApp_Image_2025-08-14_at_10.39.41_PM_sxoetg.jpg"
                 alt="Bank QR Code"
-                className="mx-auto w-40 border rounded-lg shadow"
+                className="mx-auto w-80 border rounded-lg shadow"
               />
               <p className="text-sm text-gray-500 mt-2">
                 Bank: XYZ Bank
