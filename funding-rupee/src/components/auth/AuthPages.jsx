@@ -5,6 +5,10 @@ import SignupForm from './SignupForm';
 import SmallNavbar from '../smallNavbar';
 import api from '../../api/axios';
 
+// Validation helpers
+const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+const validatePhone = (phone) => /^\d{10}$/.test(phone);
+
 const AuthPages = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
@@ -19,10 +23,17 @@ const AuthPages = () => {
 
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState(null);
+  const [showToast, setShowToast] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
+
+  const showErrorToast = (message) => {
+    setErrorMsg(message);
+    setShowToast(true);
+    setTimeout(() => setShowToast(false), 3000);
+  };
 
   const handleInputChange = (e) => {
     setFormData((prev) => ({
@@ -34,8 +45,15 @@ const AuthPages = () => {
   const handleLogin = async () => {
     setErrorMsg(null);
 
-    if (!formData.email || !formData.password) {
-      setErrorMsg('Please enter email and password.');
+    const { email, password } = formData;
+
+    if (!email || !password) {
+      showErrorToast('Please enter email and password.');
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      showErrorToast('Please enter a valid email.');
       return;
     }
 
@@ -43,15 +61,13 @@ const AuthPages = () => {
 
     try {
       await api.post('/auth/login', {
-        email: formData.email.trim(),
-        password: formData.password,
+        email: email.trim(),
+        password,
       });
-
-      // Redirect to the original page before login
       navigate(from, { replace: true });
     } catch (error) {
       console.error(error);
-      setErrorMsg(error.response?.data?.message || 'Login failed. Please try again.');
+      showErrorToast(error.response?.data?.message || 'Login failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -59,19 +75,30 @@ const AuthPages = () => {
 
   const handleSignup = async () => {
     setErrorMsg(null);
+    const { fullName, email, password, confirmPassword, phone } = formData;
 
-    if (
-      !formData.fullName ||
-      !formData.email ||
-      !formData.password ||
-      !formData.confirmPassword ||
-      !formData.phone
-    ) {
-      setErrorMsg('Please fill in all required fields.');
+    if (!fullName || !email || !password || !confirmPassword || !phone) {
+      showErrorToast('Please fill in all required fields.');
       return;
     }
-    if (formData.password !== formData.confirmPassword) {
-      setErrorMsg('Passwords do not match.');
+
+    if (!validateEmail(email)) {
+      showErrorToast('Invalid email format.');
+      return;
+    }
+
+    if (!validatePhone(phone)) {
+      showErrorToast('Phone number must be 10 digits.');
+      return;
+    }
+
+    if (password.length < 6) {
+      showErrorToast('Password must be at least 6 characters.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      showErrorToast('Passwords do not match.');
       return;
     }
 
@@ -79,15 +106,12 @@ const AuthPages = () => {
 
     try {
       const payload = {
-        name: formData.fullName.trim(),
-        email: formData.email.trim(),
-        password: formData.password,
+        name: fullName.trim(),
+        email: email.trim(),
+        password,
         profileImageUrl: '',
-        location: {
-          district: '',
-          country: '',
-        },
-        phone: formData.phone.trim(),
+        location: { district: '', country: '' },
+        phone: phone.trim(),
       };
 
       const response = await api.post('/auth/register', payload);
@@ -101,7 +125,7 @@ const AuthPages = () => {
       }));
     } catch (error) {
       console.error(error);
-      setErrorMsg(error.response?.data?.message || 'Signup failed. Please try again.');
+      showErrorToast(error.response?.data?.message || 'Signup failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -110,6 +134,14 @@ const AuthPages = () => {
   return (
     <>
       <SmallNavbar />
+
+      {/* Error Toast Popup */}
+      {showToast && (
+        <div className="fixed top-6 right-6 bg-red-600 text-white px-4 py-2 rounded-lg shadow-md z-50 animate-fade-in-down">
+          {errorMsg}
+        </div>
+      )}
+
       <div className="min-h-screen flex justify-center items-center bg-gray-50">
         {isLogin ? (
           <LoginForm
