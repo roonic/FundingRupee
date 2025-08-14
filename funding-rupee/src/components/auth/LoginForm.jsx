@@ -1,7 +1,16 @@
 import React from 'react';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 
-const LoginForm = ({ formData, onChange, onSubmit, showPassword, togglePassword, switchToSignup }) => {
+const LoginForm = ({
+  formData,
+  onChange,
+  onSubmit,
+  showPassword,
+  togglePassword,
+  switchToSignup,
+  loading,
+  errorMsg,
+}) => {
   return (
     <div className="w-full max-w-md">
       <div className="text-center mb-8">
@@ -26,6 +35,7 @@ const LoginForm = ({ formData, onChange, onSubmit, showPassword, togglePassword,
               className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg"
               placeholder="Enter your email"
               required
+              disabled={loading}
             />
           </div>
         </div>
@@ -42,11 +52,13 @@ const LoginForm = ({ formData, onChange, onSubmit, showPassword, togglePassword,
               className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg"
               placeholder="Enter your password"
               required
+              disabled={loading}
             />
             <button
               type="button"
               onClick={togglePassword}
               className="absolute right-3 top-3 h-5 w-5 text-gray-400"
+              disabled={loading}
             >
               {showPassword ? <EyeOff /> : <Eye />}
             </button>
@@ -56,10 +68,17 @@ const LoginForm = ({ formData, onChange, onSubmit, showPassword, togglePassword,
         <button
           type="button"
           onClick={onSubmit}
-          className="w-full bg-green-600 text-white py-3 px-4 rounded-lg"
+          className={`w-full bg-green-600 text-white py-3 px-4 rounded-lg ${
+            loading ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
+          disabled={loading}
         >
-          Sign In
+          {loading ? 'Signing in...' : 'Sign In'}
         </button>
+
+        {errorMsg && (
+          <p className="text-red-600 text-center text-sm mt-4">{errorMsg}</p>
+        )}
 
         <p className="text-center text-sm text-gray-600">
           Don’t have an account?{' '}
@@ -67,6 +86,7 @@ const LoginForm = ({ formData, onChange, onSubmit, showPassword, togglePassword,
             type="button"
             onClick={switchToSignup}
             className="text-green-600 font-medium"
+            disabled={loading}
           >
             Sign up
           </button>
