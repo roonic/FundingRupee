@@ -38,7 +38,7 @@ const OrgDashboard = () => {
             image: campaign.images?.[0] || 'https://via.placeholder.com/300x200',
             goal: campaign.goalAmount || 0,
             raised: campaign.currentAmount || 0,
-            progress: campaign.progress || 0,
+            progress: Math.min(100, Math.round((campaign.currentAmount / campaign.goalAmount) * 100)) || 0,
             status: campaign.endDate && new Date(campaign.endDate) > new Date() ? 'active' : 'completed',
             createdDate: campaign.createdAt ? new Date(campaign.createdAt).toISOString().split('T')[0] : 'Unknown',
             updates: campaign.updates || 0, // Assuming updates might be added later
