@@ -123,7 +123,7 @@ const DonationPage = () => {
                 Scan the QR using your banking app:
               </p>
               <img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/QR_code_icon.svg/1024px-QR_code_icon.svg.png"
+                src="https://res.cloudinary.com/ddksvqafm/image/upload/v1755190948/WhatsApp_Image_2025-08-14_at_10.39.41_PM_sxoetg.jpg"
                 alt="Bank QR Code"
                 className="mx-auto w-40 border rounded-lg shadow"
               />
