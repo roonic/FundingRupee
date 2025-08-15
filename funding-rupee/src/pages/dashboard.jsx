@@ -62,7 +62,7 @@ const OrgDashboard = () => {
           // Calculate dashboard stats
           const totalRaised = mappedCampaigns.reduce((sum, campaign) => sum + (Number(campaign.raised) || 0), 0);
           const activeCampaigns = mappedCampaigns.filter(c => c.status === 'active').length;
-          const withdrawableBalance = totalRaised * 0.9; // Assuming 90% is withdrawable
+          const withdrawableBalance = totalRaised; 
 
           setDashboardStats({
             totalCampaigns: mappedCampaigns.length,
