@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CampaignCard from './CampaignCard';
-import FloodEmergency from '../images/flood.jpeg';
+import FloodEmergency from '../images/flood.JPG';
 import Earthquake from '../images/earthquake.jpg';
 import api from '../api/axios';
 

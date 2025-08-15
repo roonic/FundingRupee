@@ -48,21 +48,21 @@ const AboutUs = () => {
     {
       name: "Mubhin Basnet",
       role: "Founder & CEO",
-      image: "https://source.unsplash.com/200x200/?businesswoman,indian",
+      image: "https://img.freepik.com/premium-photo/ai-generated-images-build-user-profile-page_1290175-101.jpg",
       description:
         "Passionate about social impact with 10+ years in fintech and social ventures.",
     },
     {
       name: "Ronij Joshi",
       role: "Chief Technology Officer",
-      image: "https://source.unsplash.com/200x200/?businessman,indian,tech",
+      image: "https://img.freepik.com/premium-photo/ai-generated-images-build-user-profile-page_1290175-101.jpg",
       description:
         "Tech innovator focused on building secure, scalable platforms for social good.",
     },
     {
       name: "Aryan Pandey",
       role: "Head of Operations",
-      image: "https://source.unsplash.com/200x200/?professional,woman,indian",
+      image: "https://img.freepik.com/premium-photo/ai-generated-images-build-user-profile-page_1290175-101.jpg",
       description:
         "Ensuring seamless operations and exceptional experience for all our users.",
     },
@@ -96,7 +96,7 @@ const AboutUs = () => {
           {/* Hero Image */}
           <div className="relative rounded-2xl overflow-hidden shadow-xl max-w-4xl mx-auto">
             <img
-              src="https://source.unsplash.com/1200x600/?community,helping,india,charity"
+              src="https://i0.wp.com/www.projectvolunteernepal.org/wp-content/uploads/2016/07/Featured-Image_Our-Aid-Projects.png?fit=1420%2C550&ssl=1"
               alt="Community helping each other"
               className="w-full h-96 object-cover"
             />

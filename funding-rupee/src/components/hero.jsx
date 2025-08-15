@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Heart, Users } from 'lucide-react';
 
 // Import your images
-import happyChildren from '../images/happychilldren.jpeg';
+import happyChildren from '../images/happychilldren.jpg';
 import helpingHands from '../images/helpinghands.jpeg';
-import volunteers from '../images/volunteers.jpg';
+import contributors from '../images/contributors.webp';
 import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
-  const images = [happyChildren, helpingHands, volunteers];
+  const images = [happyChildren, helpingHands, contributors];
 
   const navigate = useNavigate();
   const tags = [
