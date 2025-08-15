@@ -356,9 +356,6 @@ const OrgDashboard = () => {
                   <div className="p-6 border-b border-gray-100">
                     <div className="flex justify-between items-center">
                       <h2 className="text-lg font-semibold text-gray-900">My Campaigns</h2>
-                      <span className="text-sm text-red-600 bg-red-50 px-2 py-1 rounded">
-                        {campaigns.filter(c => c.status === 'pending').length} Pending
-                      </span>
                     </div>
                   </div>
                   
