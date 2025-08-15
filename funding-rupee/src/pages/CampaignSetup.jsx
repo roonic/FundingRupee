@@ -103,7 +103,7 @@ export default function CampaignSetup() {
 
       const res = await api.post("/campaigns", campaignData);
 
-      navigate("/verification", { state: { campaignId: res.data._id } });
+      navigate("/");
     } catch (err) {
       console.error(err);
       if (err.response?.status === 401) {
